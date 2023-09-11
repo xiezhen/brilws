@@ -84,7 +84,7 @@ DT_RAW_&suffix:         #per ls but from online
     - avglumi: float
    pk: [ datatagid ]
 
-BCM1FSI_RAW_&suffix: #per ls
+RAMSES_RAW_&suffix:         #per ls but from online
    columns:
     - datatagid: int64
     - fillnum: uint32
@@ -92,9 +92,8 @@ BCM1FSI_RAW_&suffix: #per ls
     - lsnum: uint32
     - timestampsec: uint32
     - avglumi: float
-    - bxlumiblob: blob
    pk: [ datatagid ]
-
+   
 BCM1FUTCA_RAW_&suffix: #per ls
    columns:
     - datatagid: int64
@@ -160,19 +159,6 @@ BCM1F_RESULT_&suffix:
     - bxlumiblob: blob
    pk: [datatagid,normtagid]
 
-BCM1FSI_RESULT_&suffix:
-   columns:
-    - datatagid: int64
-    - fillnum: uint32
-    - runnum: uint32
-    - lsnum: uint32
-    - timestampsec: uint32
-    - normtag: string
-    - normtagid: int64
-    - avglumi: float
-    - bxlumiblob: blob
-   pk: [datatagid,normtagid]
-
 BCM1FUTCA_RESULT_&suffix:
    columns:
     - datatagid: int64
@@ -198,6 +184,17 @@ DT_RESULT_&suffix:         #per ls but from online
     - avglumi: float
    pk: [ datatagid,normtagid]
 
+RAMSES_RESULT_&suffix:         #per ls but from online
+   columns:
+    - datatagid: int64
+    - fillnum: uint32
+    - runnum: uint32
+    - lsnum: uint32
+    - timestampsec: uint32
+    - normtag: string
+    - normtagid: int64
+    - avglumi: float
+   pk: [ datatagid,normtagid]
 
 ONLINE_RESULT_&suffix:
    columns:

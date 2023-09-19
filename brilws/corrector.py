@@ -84,7 +84,7 @@ class FunctionFactory(object):
         ivalue = functionroot.root[0]
         ncollidingbx =  functionroot.root[2]
         coefsStr = kwds['coefs']
-        coefs = np.fromstring(coefsStr, dtype=np.float, sep=',')
+        coefs = np.fromstring(coefsStr, dtype=np.float64, sep=',')
         if not isinstance(ivalue,collections.Iterable) : #is totallumi, in this case, need to use term totallumi/nbx
             with np.errstate(divide='ignore',invalid='ignore'):
                 ivalue = np.true_divide(ivalue,ncollidingbx)
@@ -94,9 +94,9 @@ class FunctionFactory(object):
         if len(coefs)>1:
             coefs = coefs[::-1] #reverse the order because polyval coefs order is reverse of np.poly1d
         if isinstance(ivalue,collections.Iterable) :
-            return P.polyval(ivalue,coefs)
+            return P.polyval(float(ivalue),coefs)
         else:
-            return ncollidingbx*P.polyval(ivalue,coefs)           
+            return ncollidingbx*P.polyval(float(ivalue),coefs)           
             
     def poly2dlL(self,functionroot,kwds):
         '''
@@ -128,9 +128,9 @@ class FunctionFactory(object):
        
         coefsStr = kwds['coefs']
 
-        coefs = np.array(ast.literal_eval(coefsStr), dtype=np.float)
+        coefs = np.array(ast.literal_eval(coefsStr), dtype=np.float64)
         if isinstance(l,collections.Iterable):
-            return P.polyval2d(bxlumi,totlumi,coefs)
+            return P.polyval2d(float(bxlumi),totlumi,coefs)
         else:
             return ncollidingbx*P.polyval2d(bxlumi,totlumi,coefs)
 
